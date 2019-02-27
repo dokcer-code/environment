@@ -1,0 +1,63 @@
+version: '3'
+services:
+    php-7.2:
+        build:
+            context: docker/build/php-7.2/
+        networks:
+            self:
+                ipv4_address: ${PHP_7_2_HOST}
+        volumes:
+            - /var/www/bien:/var/www/bien
+            - /var/www/cabinet:/var/www/cabinet
+            - /var/www/service_network:/var/www/service_network
+            - /var/www/service_network_2:/var/www/service_network_2
+            - /var/www/service_network_3:/var/www/service_network_3
+            - /var/www/spare_network:/var/www/spare_network
+    php-7.1:
+        build:
+            context: docker/build/php-7.1/
+        networks:
+            self:
+                ipv4_address: ${PHP_7_1_HOST}
+        volumes:
+            - /var/www/bien:/var/www/bien
+            - /var/www/cabinet:/var/www/cabinet
+            - /var/www/service_network:/var/www/service_network
+            - /var/www/service_network_2:/var/www/service_network_2
+            - /var/www/service_network_3:/var/www/service_network_3
+            - /var/www/spare_network:/var/www/spare_network
+        links:
+            - mysql-5.6 
+    mysql-8:
+        image: mysql:8
+        volumes:
+            - ./docker/server/mysql-8:/var/lib/mysql
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+        networks:
+            self:
+                ipv4_address: ${MYSQL_8_HOST}
+    mysql-5.7:
+        image: mysql:5.7
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+        volumes:
+            - ./docker/server/mysql-5.7:/var/lib/mysql
+        networks:
+            self:
+                ipv4_address: ${MYSQL_5_7_HOST}
+    mysql-5.6:
+        image: mysql:5.6
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+        volumes:
+            - ./docker/server/mysql-5.6:/var/lib/mysql
+        networks:
+            self:
+                ipv4_address: ${MYSQL_5_6_HOST}
+networks:
+    self:
+        driver: bridge
+        ipam: 
+            config:
+                - subnet: ${NETWORK_SUBNET}            
