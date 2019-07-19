@@ -6,28 +6,38 @@ services:
         networks:
             self:
                 ipv4_address: ${PHP_7_2_HOST}
-        volumes:
-            - /var/www/bien:/var/www/bien
-            - /var/www/cabinet:/var/www/cabinet
-            - /var/www/service_network:/var/www/service_network
-            - /var/www/service_network_2:/var/www/service_network_2
-            - /var/www/service_network_3:/var/www/service_network_3
-            - /var/www/spare_network:/var/www/spare_network
+        # volumes:
+            # - /var/www/bien:/var/www/bien
+            #- /var/www/cabinet:/var/www/cabinet
+            #- /var/www/service_network:/var/www/service_network
+            #- /var/www/service_network_2:/var/www/service_network_2
+            #- /var/www/service_network_3:/var/www/service_network_3
+            #- /var/www/spare_network:/var/www/spare_network
     php-7.1:
         build:
             context: docker/build/php-7.1/
         networks:
             self:
                 ipv4_address: ${PHP_7_1_HOST}
-        volumes:
-            - /var/www/bien:/var/www/bien
-            - /var/www/cabinet:/var/www/cabinet
-            - /var/www/service_network:/var/www/service_network
-            - /var/www/service_network_2:/var/www/service_network_2
-            - /var/www/service_network_3:/var/www/service_network_3
-            - /var/www/spare_network:/var/www/spare_network
+        # volumes:
+            #- /var/www/bien:/var/www/bien
+            #- /var/www/cabinet:/var/www/cabinet
+            #- /var/www/service_network:/var/www/service_network
+            #- /var/www/service_network_2:/var/www/service_network_2
+            #- /var/www/service_network_3:/var/www/service_network_3
+            #- /var/www/spare_network:/var/www/spare_network
         links:
-            - mysql-5.6 
+            - mysql-5.6
+    php-7.3:
+        build:
+            context: docker/build/php-7.3/
+        user: "1000"
+        volumes:
+          - /var/www/service_network:/var/www/test
+        networks:
+            self:
+                ipv4_address: ${PHP_7_3_HOST}
+        working_dir: /var/www/test
     mysql-8:
         image: mysql:8
         volumes:
