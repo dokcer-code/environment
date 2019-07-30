@@ -19,6 +19,9 @@ services:
         networks:
             self:
                 ipv4_address: ${PHP_7_1_HOST}
+        user: "1000"
+        environment:
+            CLIENT_HOST: ${CLIENT_HOST}
         volumes:
             - /var/www/salonrk:/var/www/salonrk
             #- /var/www/bien:/var/www/bien
@@ -29,7 +32,7 @@ services:
             #- /var/www/spare_network:/var/www/spare_network
         links:
             - mysql-5.6
-        working_dir: /var/www/test
+        working_dir: /var/www
     php-7.3:
         build:
             context: docker/build/php-7.3/
