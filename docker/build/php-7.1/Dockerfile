@@ -17,4 +17,8 @@ RUN apt-get install -y libicu-dev
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 
+RUN apt-get install -y libjpeg62-turbo-dev libpng-dev
+RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/png/
+RUN docker-php-ext-install -j$(nproc) gd
+
 ADD xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
