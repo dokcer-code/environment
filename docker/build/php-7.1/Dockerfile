@@ -22,3 +22,4 @@ RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/us
 RUN docker-php-ext-install -j$(nproc) gd
 
 ADD xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+ADD php.ini /usr/local/etc/php/conf.d/php.ini
