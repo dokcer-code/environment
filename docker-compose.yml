@@ -8,6 +8,8 @@ services:
         networks:
             self:
                 ipv4_address: ${NGINX_HOST}
+        links:
+          - php-7.1
     php-7.1:
         build:
             context: docker/build/php-7.1/
