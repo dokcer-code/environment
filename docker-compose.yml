@@ -6,6 +6,7 @@ services:
         volumes:
             - /var/www/vse-avtoservisy.ru/app/web:/var/www/vse-avtoservisy.ru/app/web
             - /var/www/cabinet/app/web/:/var/www/cabinet/app/web/
+            - ./docker/build/nginx/log:/var/log/nginx
         expose:
           - 80
           - 443
