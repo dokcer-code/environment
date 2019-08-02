@@ -9,47 +9,50 @@ services:
         networks:
             self:
                 ipv4_address: ${NGINX_HOST}
+        expose:
+          - 80
+          - 443
         links:
           - php-fpm-7.1
+          - node
     php-fpm-7.1:
         build:
-            context: docker/build/php-7.1/
-        networks:
-            self:
-                ipv4_address: ${PHP_7_1_HOST}
+            context: docker/build/php-fpm-7.1/
+
         user: "1000"
-        environment:
-            CLIENT_HOST: ${CLIENT_HOST}
-            COMPOSER_HOME: '/tmp/composer'
         volumes:
             - /var/www/salonrk:/var/www/salonrk
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
             - /var/www/cabinet:/var/www/cabinet
-            #- /var/www/bien:/var/www/bien
-            #- /var/www/cabinet:/var/www/cabinet
-            #- /var/www/service_network:/var/www/service_network
-            #- /var/www/service_network_2:/var/www/service_network_2
-            #- /var/www/service_network_3:/var/www/service_network_3
-            #- /var/www/spare_network:/var/www/spare_network
         working_dir: /var/www
         extra_hosts:
             - "avto-servisy.loc:${CLIENT_HOST}"
+        links:
+            - redis
+            - rabbitmq
+        networks:
+            self:
+                ipv4_address: ${PHP_7_1_HOST}
+    php-cli-7.1:
+        build:
+            context: docker/build/php-cli-7.1/
+        user: "1000"
+        environment:
+            COMPOSER_HOME: '/tmp/composer'
+        volumes:
+            - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
+        working_dir: /var/www
+        links:
+            - rabbitmq
     php-fpm-7.2:
         build:
-            context: docker/build/php-7.2/
+            context: docker/build/php-fpm-7.2/
         networks:
             self:
                 ipv4_address: ${PHP_7_2_HOST}
-        # volumes:
-            # - /var/www/bien:/var/www/bien
-            #- /var/www/cabinet:/var/www/cabinet
-            #- /var/www/service_network:/var/www/service_network
-            #- /var/www/service_network_2:/var/www/service_network_2
-            #- /var/www/service_network_3:/var/www/service_network_3
-            #- /var/www/spare_network:/var/www/spare_network
     php-fpm-7.3:
         build:
-            context: docker/build/php-7.3/
+            context: docker/build/php-fpm-7.3/
         user: "1000"
         volumes:
             - /var/www/laravel:/var/www/laravel
@@ -85,6 +88,35 @@ services:
         networks:
             self:
                 ipv4_address: ${MYSQL_5_6_HOST}
+    node:
+        build:
+            context: ./docker/build/node
+        networks:
+            self:
+                ipv4_address: ${NODE_HOST}
+        volumes:
+            - /var/www/cabinet:/var/www/cabinet
+        working_dir: /var/www/
+        user: "1000"
+        expose:
+            - 8890
+        links:
+            - redis
+        command: node /var/www/cabinet/app/nodejs/server.js
+    redis:
+        image: redis:5.0
+        networks:
+            self:
+                ipv4_address: ${REDIS_HOST}
+    rabbitmq:
+        image: rabbitmq:3.7-management
+        environment:
+            RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+            RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+            RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+        networks:
+            self:
+                ipv4_address: ${RABBIT_MQ_HOST}
 networks:
     self:
         driver: bridge

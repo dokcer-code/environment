@@ -1,4 +1,4 @@
-FROM php:7.1-fpm 
+FROM php:7.1-cli
 
 ENV DEBIAN_FRONT nointeractive
 
@@ -10,8 +10,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # adjust php
 
 RUN apt-get install -y zlib1g-dev unzip && docker-php-ext-install zip
-RUN pecl install xdebug-2.6.1 && docker-php-ext-enable xdebug
-RUN docker-php-ext-install pdo_mysql
+
+RUN pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug
+
+RUN docker-php-ext-install pdo_mysql sockets bcmath
 
 RUN apt-get install -y libicu-dev
 RUN docker-php-ext-configure intl
