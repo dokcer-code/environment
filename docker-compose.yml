@@ -40,6 +40,7 @@ services:
             COMPOSER_HOME: '/tmp/composer'
         volumes:
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
+            - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
         working_dir: /var/www
         links:
             - rabbitmq
