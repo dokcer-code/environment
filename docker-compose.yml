@@ -25,6 +25,7 @@ services:
             - /var/www/salonrk:/var/www/salonrk
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
             - /var/www/cabinet:/var/www/cabinet
+            - ./docker/build/php-fpm-7.1/log:/usr/local/var/log/php
         working_dir: /var/www
         extra_hosts:
             - "avto-servisy.loc:${CLIENT_HOST}"

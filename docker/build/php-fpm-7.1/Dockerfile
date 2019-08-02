@@ -20,5 +20,8 @@ RUN apt-get install -y libjpeg62-turbo-dev libpng-dev
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/png/
 RUN docker-php-ext-install -j$(nproc) gd
 
+RUN mkdir /usr/local/var/log/php/
+RUN chmod 0777 /usr/local/var/log/php
+ADD www.conf /usr/local/etc/php-fpm.d/www.conf
 ADD xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 ADD php.ini /usr/local/etc/php/conf.d/php.ini
