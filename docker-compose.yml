@@ -19,8 +19,9 @@ services:
     php-fpm-7.1:
         build:
             context: docker/build/php-fpm-7.1/
-
         user: "1000"
+        environment:
+            CLIENT_HOST: ${CLIENT_HOST}
         volumes:
             - /var/www/salonrk:/var/www/salonrk
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
