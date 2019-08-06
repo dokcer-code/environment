@@ -23,6 +23,4 @@ RUN docker-php-ext-install -j$(nproc) gd
 RUN mkdir /usr/local/var/log/php/
 RUN chmod 0777 /usr/local/var/log/php
 ADD www.conf /usr/local/etc/php-fpm.d/www.conf
-ADD xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-ADD session.ini /usr/local/etc/php/conf.d/
-ADD php.ini /usr/local/etc/php/conf.d/php.ini
+ADD conf.d/ /usr/local/etc/php/conf.d/
