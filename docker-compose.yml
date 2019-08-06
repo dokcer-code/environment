@@ -27,6 +27,7 @@ services:
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
             - /var/www/cabinet:/var/www/cabinet
             - ./docker/build/php-fpm-7.1/log:/usr/local/var/log/php
+            - ./docker/build/php-fpm-7.1/tmp:/tmp/php
         working_dir: /var/www
         extra_hosts:
             - "avto-servisy.loc:${CLIENT_HOST}"
@@ -42,9 +43,12 @@ services:
         environment:
             COMPOSER_HOME: '/tmp/composer'
         volumes:
+            - /var/www/salonrk:/var/www/salonrk
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
+            - /var/www/cabinet:/var/www/cabinet
             - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
         working_dir: /var/www
+        user: "1000"
         links:
             - rabbitmq
         networks:
