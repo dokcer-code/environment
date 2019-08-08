@@ -16,8 +16,8 @@ RUN apt-get install -y libicu-dev
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 
-RUN apt-get install -y libjpeg62-turbo-dev libpng-dev
-RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/png/
+RUN apt-get install -y libjpeg62-turbo-dev libpng-dev libfreetype6-dev
+RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/png/ --with-freetype-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
 
 RUN mkdir /usr/local/var/log/php/
