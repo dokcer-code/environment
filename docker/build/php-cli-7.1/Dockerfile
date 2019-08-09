@@ -33,9 +33,12 @@ ADD conf.d/ /usr/local/etc/php/conf.d/
 ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 
+RUN mkdir -p /run/sshd
+
 USER user
 
 EXPOSE 9001
+
 
 CMD ["sudo", "/usr/bin/supervisord"]
 
