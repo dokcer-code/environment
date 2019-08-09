@@ -6,9 +6,13 @@ ENV DEBIAN_FRONT nointeractive
 
 RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server
 
+# sshd
+RUN mkdir -p /run/sshd
+
 # user
 RUN useradd -m --uid $UID --shell /bin/bash --password password user
 ADD sudo/user /etc/sudoers.d
+ADD home/.profile /home/user/
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
@@ -30,15 +34,13 @@ RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/us
 RUN docker-php-ext-install -j$(nproc) gd
 
 ADD conf.d/ /usr/local/etc/php/conf.d/
+
+# supervisor
 ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
-
-RUN mkdir -p /run/sshd
-
-USER user
-
 EXPOSE 9001
 
+USER user
 
 CMD ["sudo", "/usr/bin/supervisord"]
 
