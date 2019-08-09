@@ -1,8 +1,14 @@
 FROM php:7.1-cli
 
+ARG UID
+
 ENV DEBIAN_FRONT nointeractive
 
-RUN apt-get update && apt-get install -y less nano mc git supervisor
+RUN apt-get update && apt-get install -y less nano mc git supervisor sudo
+
+# user
+RUN useradd -m --uid $UID --shell /bin/bash user
+ADD sudo/user /etc/sudoers.d
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
@@ -27,5 +33,7 @@ ADD conf.d/ /usr/local/etc/php/conf.d/
 ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 
-RUN useradd -u 1000 1000
-CMD ["/usr/bin/supervisord"]
+USER user
+
+CMD ["sudo", "/usr/bin/supervisord"]
+

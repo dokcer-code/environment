@@ -41,13 +41,15 @@ services:
     php-cli-7.1:
         build:
             context: docker/build/php-cli-7.1/
-        environment:
-            COMPOSER_HOME: '/tmp/composer'
+            args:
+                UID: ${USER_ID}
         volumes:
             - /var/www/salonrk:/var/www/salonrk
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
             - /var/www/cabinet:/var/www/cabinet
+
             - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
+            - /home/cheremhovo1990/.ssh:/home/user/.ssh
         working_dir: /var/www
         links:
             - rabbitmq
