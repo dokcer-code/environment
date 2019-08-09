@@ -17,27 +17,6 @@ services:
         networks:
             self:
                 ipv4_address: ${NGINX_HOST}
-    php-fpm-7.1:
-        build:
-            context: docker/build/php-fpm-7.1/
-        user: "1000"
-        environment:
-            CLIENT_HOST: ${CLIENT_HOST}
-        volumes:
-            - /var/www/salonrk:/var/www/salonrk
-            - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
-            - /var/www/cabinet:/var/www/cabinet
-            - ./docker/build/php-fpm-7.1/log:/usr/local/var/log/php
-            - ./docker/build/php-fpm-7.1/tmp:/tmp/php
-        working_dir: /var/www
-        extra_hosts:
-            - "avto-servisy.loc:${CLIENT_HOST}"
-        links:
-            - redis
-            - rabbitmq
-        networks:
-            self:
-                ipv4_address: ${PHP_7_1_HOST}
     php-cli-7.1:
         build:
             context: docker/build/php-cli-7.1/
@@ -56,6 +35,28 @@ services:
         networks:
             self:
                 ipv4_address: ${PHP_CLI_7_1_HOST}
+    php-fpm-7.1:
+        build:
+            context: docker/build/php-fpm-7.1/
+            args:
+                UID: ${USER_ID}
+        environment:
+            CLIENT_HOST: ${CLIENT_HOST}
+        volumes:
+            - /var/www/salonrk:/var/www/salonrk
+            - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
+            - /var/www/cabinet:/var/www/cabinet
+            - ./docker/build/php-fpm-7.1/log:/usr/local/var/log/php
+            - ./docker/build/php-fpm-7.1/tmp:/tmp/php
+        working_dir: /var/www
+        extra_hosts:
+            - "avto-servisy.loc:${CLIENT_HOST}"
+        links:
+            - redis
+            - rabbitmq
+        networks:
+            self:
+                ipv4_address: ${PHP_7_1_HOST}
     php-fpm-7.2:
         build:
             context: docker/build/php-fpm-7.2/

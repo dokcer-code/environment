@@ -1,8 +1,15 @@
 FROM php:7.1-fpm 
 
+ARG UID
+
 ENV DEBIAN_FRONT nointeractive
 
-RUN apt-get update && apt-get install -y less nano mc git
+RUN apt-get update && apt-get install -y less nano mc git sudo
+
+# user
+RUN useradd -m --uid $UID --shell /bin/bash user
+ADD sudo/user /etc/sudoers.d
+
 
 # adjust php
 
@@ -24,3 +31,5 @@ RUN mkdir /usr/local/var/log/php/
 RUN chmod 0777 /usr/local/var/log/php
 ADD www.conf /usr/local/etc/php-fpm.d/www.conf
 ADD conf.d/ /usr/local/etc/php/conf.d/
+
+USER user
