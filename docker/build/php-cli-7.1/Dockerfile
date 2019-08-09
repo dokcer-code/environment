@@ -4,10 +4,10 @@ ARG UID
 
 ENV DEBIAN_FRONT nointeractive
 
-RUN apt-get update && apt-get install -y less nano mc git supervisor sudo
+RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server
 
 # user
-RUN useradd -m --uid $UID --shell /bin/bash user
+RUN useradd -m --uid $UID --shell /bin/bash --password password user
 ADD sudo/user /etc/sudoers.d
 
 # install composer
