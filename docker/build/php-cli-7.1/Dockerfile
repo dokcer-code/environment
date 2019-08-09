@@ -35,5 +35,7 @@ ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 
 USER user
 
+EXPOSE 9001
+
 CMD ["sudo", "/usr/bin/supervisord"]
 
