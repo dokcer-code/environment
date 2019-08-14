@@ -4,7 +4,7 @@ ARG UID
 
 ENV DEBIAN_FRONT nointeractive
 
-RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server
+RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server cron
 
 # sshd
 RUN mkdir -p /run/sshd
@@ -16,6 +16,8 @@ ADD home/.profile /home/user/
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
+
+# cron
 
 # adjust php
 
@@ -40,7 +42,10 @@ ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 EXPOSE 9001
 
+ADD cron/crontab /etc/crontab
+
 USER user
+
 
 CMD ["sudo", "/usr/bin/supervisord"]
 
