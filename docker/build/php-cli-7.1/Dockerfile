@@ -19,6 +19,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # cron
 
+ADD cron/crontab /etc/crontab
+
 # adjust php
 
 RUN apt-get install -y zlib1g-dev unzip && docker-php-ext-install zip
@@ -42,10 +44,7 @@ ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 EXPOSE 9001
 
-ADD cron/crontab /etc/crontab
-
 USER user
-
 
 CMD ["sudo", "/usr/bin/supervisord"]
 
