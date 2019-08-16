@@ -44,7 +44,23 @@ ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 EXPOSE 9001
 
-USER user
+ENV container=docker
 
-CMD ["sudo", "/usr/bin/supervisord"]
+ADD systemd/container.target /etc/systemd/system/container.target
+
+RUN apt update && \
+    apt install -y systemd python && \
+    ln -sf /etc/systemd/system/container.target /etc/systemd/system/default.target && \
+    ln -sf /lib/systemd/systemd /sbin/init
+
+RUN systemctl restart ssh
+
+ADD systemd/ssh.service /lib/systemd/system/ssh.service
+
+
+ENTRYPOINT ["/sbin/init"]
+
+CMD ["--log-level=info"]
+
+STOPSIGNAL SIGRTMIN+3
 
