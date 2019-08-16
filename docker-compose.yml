@@ -31,7 +31,7 @@ services:
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
             - ./docker/build/php-cli-7.1/bash_history/.bash_history:/home/user/.bash_history
             - ./docker/build/php-cli-7.1/cron/log:/var/log/cron
-            - /sys/fs/cgroup:/sys/fs/cgroup
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
             - /sys/fs/fuse:/sys/fs/fuse
         tmpfs:
             - /run

@@ -6,9 +6,6 @@ ENV DEBIAN_FRONT nointeractive
 
 RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server cron
 
-# sshd
-RUN mkdir -p /run/sshd
-
 # user
 RUN useradd -m --uid $UID --shell /bin/bash --password password user
 ADD sudo/user /etc/sudoers.d
@@ -17,9 +14,6 @@ ADD home/.profile /home/user/
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
 
-# cron
-
-ADD cron/crontab /etc/crontab
 
 # adjust php
 
@@ -39,28 +33,12 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 ADD conf.d/ /usr/local/etc/php/conf.d/
 
+# cron
+ADD cron/crontab /etc/crontab
+
 # supervisor
 ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 EXPOSE 9001
 
-ENV container=docker
-
-ADD systemd/container.target /etc/systemd/system/container.target
-
-RUN apt update && \
-    apt install -y systemd python && \
-    ln -sf /etc/systemd/system/container.target /etc/systemd/system/default.target && \
-    ln -sf /lib/systemd/systemd /sbin/init
-
-RUN systemctl restart ssh
-
-ADD systemd/ssh.service /lib/systemd/system/ssh.service
-
-
 ENTRYPOINT ["/sbin/init"]
-
-CMD ["--log-level=info"]
-
-STOPSIGNAL SIGRTMIN+3
-
