@@ -34,6 +34,7 @@ ADD conf.d/ /usr/local/etc/php/conf.d/
 
 # cron file
 ADD cron/crontab /etc/crontab
+RUN chmod 0644 /etc/crontab
 
 # supervisor
 ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
