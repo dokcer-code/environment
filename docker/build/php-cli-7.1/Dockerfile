@@ -14,7 +14,6 @@ ADD home/.profile /home/user/
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
 
-
 # adjust php
 
 RUN apt-get install -y zlib1g-dev unzip && docker-php-ext-install zip
@@ -33,7 +32,7 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 ADD conf.d/ /usr/local/etc/php/conf.d/
 
-# cron
+# cron file
 ADD cron/crontab /etc/crontab
 
 # supervisor
