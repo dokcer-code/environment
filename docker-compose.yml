@@ -3,13 +3,6 @@ services:
     nginx:
         build:
             context: docker/build/nginx
-        volumes:
-            - /var/www/vse-avtoservisy.ru/app/web:/var/www/vse-avtoservisy.ru/app/web
-            - /var/www/avto-servisy/app/web:/var/www/avto-servisy/app/web
-            - /var/www/cabinet/app/web/:/var/www/cabinet/app/web/
-            - /var/www/salonrk/web:/var/www/salonrk/web
-            - ./docker/build/nginx/log:/var/log/nginx
-            - /var/www/developer-pro.ru/public:/var/www/developer-pro.ru/public
         expose:
           - 80
           - 443
@@ -26,11 +19,6 @@ services:
             args:
                 UID: ${USER_ID}
         volumes:
-            - /var/www/salonrk:/var/www/salonrk
-            - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
-            - /var/www/avto-servisy:/var/www/avto-servisy
-            - /var/www/cabinet:/var/www/cabinet
-
             - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
             - ./docker/build/php-cli-7.1/bash_history/.bash_history:/home/user/.bash_history
@@ -53,13 +41,6 @@ services:
                 UID: ${USER_ID}
         environment:
             CLIENT_HOST: ${CLIENT_HOST}
-        volumes:
-            - /var/www/salonrk:/var/www/salonrk
-            - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
-            - /var/www/avto-servisy:/var/www/avto-servisy
-            - /var/www/cabinet:/var/www/cabinet
-            - ./docker/build/php-fpm-7.1/log:/usr/local/var/log/php
-            - ./docker/build/php-fpm-7.1/tmp:/tmp/php
         working_dir: /var/www
         extra_hosts:
             - "avto-servisy.loc:${CLIENT_HOST}"
@@ -81,8 +62,6 @@ services:
             args:
                 UID: ${USER_ID}
         volumes:
-            - /var/www/developer-pro.ru:/var/www/developer-pro.ru
-
             - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
             - ./docker/build/php-cli-7.1/bash_history/.bash_history:/home/user/.bash_history
@@ -103,10 +82,6 @@ services:
                 UID: ${USER_ID}
         environment:
             CLIENT_HOST: ${CLIENT_HOST}
-        volumes:
-            - /var/www/laravel:/var/www/laravel
-            - /var/www/service_network:/var/www/service_network
-            - /var/www/developer-pro.ru:/var/www/developer-pro.ru
         networks:
             self:
                 ipv4_address: ${PHP_7_3_HOST}

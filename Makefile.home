@@ -1,0 +1,4 @@
+docker-up:
+	docker-compose up -d nginx php-fpm-7.3 php-cli-7.3
+docker-down:
+	docker-compose down -v
