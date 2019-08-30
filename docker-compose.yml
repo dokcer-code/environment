@@ -9,11 +9,13 @@ services:
             - /var/www/cabinet/app/web/:/var/www/cabinet/app/web/
             - /var/www/salonrk/web:/var/www/salonrk/web
             - ./docker/build/nginx/log:/var/log/nginx
+            - /var/www/developer-pro.ru/public:/var/www/developer-pro.ru/public
         expose:
           - 80
           - 443
         links:
           - php-fpm-7.1
+          - php-fpm-7.3
           - node
         networks:
             self:
@@ -73,6 +75,27 @@ services:
         networks:
             self:
                 ipv4_address: ${PHP_7_2_HOST}
+    php-cli-7.3:
+        build:
+            context: docker/build/php-cli-7.3/
+            args:
+                UID: ${USER_ID}
+        volumes:
+            - /var/www/developer-pro.ru:/var/www/developer-pro.ru
+
+            - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
+            - /home/cheremhovo1990/.ssh:/home/user/.ssh
+            - ./docker/build/php-cli-7.1/bash_history/.bash_history:/home/user/.bash_history
+            - ./docker/build/php-cli-7.1/cron/log:/var/log/cron
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+            - /sys/fs/fuse:/sys/fs/fuse
+        tmpfs:
+            - /run
+            - /run/lock
+        working_dir: /var/www
+        networks:
+            self:
+                ipv4_address: ${PHP_CLI_7_3_HOST}
     php-fpm-7.3:
         build:
             context: docker/build/php-fpm-7.3/
