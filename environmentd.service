@@ -1,0 +1,23 @@
+[Unit]
+Description=service with docker-compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+
+WorkingDirectory=/var/www/environment
+
+# Remove old containers, network and volumes
+ExecStartPre=/usr/local/bin/docker-compose down -v
+ExecStartPre=-/bin/bash -c 'docker network rm environment_self'
+ExecStartPre=-/bin/bash -c 'docker ps -aqf "name=environment" | xargs docker rm'
+
+# Compose up
+ExecStart=/usr/local/bin/docker-compose up
+
+# Compose down, remove containers
+ExecStop=/usr/local/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
