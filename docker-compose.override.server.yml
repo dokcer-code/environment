@@ -2,6 +2,7 @@ version: '3'
 services:
     php-cli-7.3:
         volumes:
+            - /home/cheremhovo1990/.ssh:/home/user/.ssh
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
     php-fpm-7.3:
         volumes:
