@@ -7,9 +7,10 @@ ENV DEBIAN_FRONT nointeractive
 RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server cron
 
 # user
-RUN useradd -m --uid $UID --shell /bin/bash --password password user
+RUN useradd --create-home --uid $UID --shell /bin/bash user
 ADD sudo/user /etc/sudoers.d
 ADD home/.profile /home/user/
+RUN echo 'user:password' | chpasswd
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
