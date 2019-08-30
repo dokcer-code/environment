@@ -3,12 +3,11 @@ services:
     nginx:
         volumes:
             - /var/www/developer-pro.ru/public:/var/www/developer-pro.ru/public
+        links:
+            - php-fpm-7.3
     php-cli-7.3:
         volumes:
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
     php-fpm-7.3:
         volumes:
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
-    node:
-        command: ''
-        tty: true

@@ -6,10 +6,6 @@ services:
         expose:
           - 80
           - 443
-        links:
-          - php-fpm-7.1
-          - php-fpm-7.3
-          - node
         networks:
             self:
                 ipv4_address: ${NGINX_HOST}
@@ -29,8 +25,6 @@ services:
             - /run
             - /run/lock
         working_dir: /var/www
-        links:
-            - rabbitmq
         networks:
             self:
                 ipv4_address: ${PHP_CLI_7_1_HOST}
@@ -42,11 +36,6 @@ services:
         environment:
             CLIENT_HOST: ${CLIENT_HOST}
         working_dir: /var/www
-        extra_hosts:
-            - "avto-servisy.loc:${CLIENT_HOST}"
-        links:
-            - redis
-            - rabbitmq
         networks:
             self:
                 ipv4_address: ${PHP_7_1_HOST}
@@ -118,15 +107,9 @@ services:
         networks:
             self:
                 ipv4_address: ${NODE_HOST}
-        volumes:
-            - /var/www/cabinet:/var/www/cabinet
         working_dir: /var/www/
-        user: "1000"
         expose:
             - 8890
-        links:
-            - redis
-        command: node /var/www/cabinet/app/nodejs/server.js
     redis:
         image: redis:5.0
         networks:
