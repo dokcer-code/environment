@@ -42,4 +42,4 @@ ADD supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 EXPOSE 9001
 
-ENTRYPOINT ["/sbin/init"]
+ENTRYPOINT ["/bin/systemd"]
