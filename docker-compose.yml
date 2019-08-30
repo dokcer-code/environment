@@ -76,14 +76,17 @@ services:
     php-fpm-7.3:
         build:
             context: docker/build/php-fpm-7.3/
-        user: "1000"
+            args:
+                UID: ${USER_ID}
+        environment:
+            CLIENT_HOST: ${CLIENT_HOST}
         volumes:
             - /var/www/laravel:/var/www/laravel
             - /var/www/service_network:/var/www/service_network
+            - /var/www/developer-pro.ru:/var/www/developer-pro.ru
         networks:
             self:
                 ipv4_address: ${PHP_7_3_HOST}
-        working_dir: /var/www/
     mysql-8:
         image: mysql:8
         volumes:
