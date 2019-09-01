@@ -71,6 +71,7 @@ services:
                 UID: ${USER_ID}
         environment:
             CLIENT_HOST: ${CLIENT_HOST}
+        working_dir: /var/www
         networks:
             self:
                 ipv4_address: ${PHP_7_3_HOST}
