@@ -4,7 +4,7 @@ ARG UID
 
 ENV DEBIAN_FRONT nointeractive
 
-RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server cron
+RUN apt-get update && apt-get install -y less nano mc git supervisor sudo openssh-server cron node.js npm
 
 # user
 RUN useradd --create-home --uid $UID --shell /bin/bash user

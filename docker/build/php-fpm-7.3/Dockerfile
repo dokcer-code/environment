@@ -4,7 +4,7 @@ ARG UID
 
 ENV DEBIAN_FRONT nointeractive
 
-RUN apt-get update && apt-get install -y less nano mc git sudo
+RUN apt-get update && apt-get install -y less nano mc git sudo node.js npm
 
 # user
 RUN useradd -m --uid $UID --shell /bin/bash user
