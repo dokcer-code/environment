@@ -1,0 +1,14 @@
+server {
+	listen 171.255.255.8:80;
+	server_name api.hostel.loc;
+	root /var/www/api-hostel/public;
+    index index.php;
+    charset utf-8;
+
+    access_log /var/log/nginx/hostel.access.log;
+    error_log /var/log/nginx/hostel.error.log;
+
+    include snippets/favicon.ico.conf;
+    include snippets/common.conf;
+    include snippets/php-7.3.conf;
+}
