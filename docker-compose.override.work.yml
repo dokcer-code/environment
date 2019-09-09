@@ -6,6 +6,7 @@ services:
             - /var/www/avto-servisy/app/web:/var/www/avto-servisy/app/web
             - /var/www/cabinet/app/web/:/var/www/cabinet/app/web/
             - /var/www/salonrk/web:/var/www/salonrk/web
+            - /var/www/laravel/public:/var/www/laravel/public
         links:
             - php-fpm-7.1
             - php-fpm-7.3
@@ -29,6 +30,12 @@ services:
             - rabbitmq
         extra_hosts:
             - "avto-servisy.loc:${CLIENT_HOST}"
+    php-cli-7.3:
+        volumes:
+            - /var/www/laravel:/var/www/laravel
+    php-fpm-7.3:
+        volumes:
+            - /var/www/laravel:/var/www/laravel
     node:
         volumes:
             - /var/www/cabinet:/var/www/cabinet
