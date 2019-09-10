@@ -1,7 +1,7 @@
 server {
 	listen 171.255.255.8:80;
-	server_name api.hostel.loc;
-	root /var/www/api-hostel/public;
+	server_name hostel.loc;
+	root /var/www/network-hostel/web;
     index index.php;
     charset utf-8;
 
