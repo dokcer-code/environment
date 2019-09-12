@@ -1,24 +1,16 @@
 server {
     listen 171.255.255.8:80;
     server_name vse-avtoservisy.loc www.vse-avtoservisy.loc;
-    return https://vse-avtoservisy.loc;
+    return https://$host$request_uri;
 }
-server {
-    listen 171.255.255.8:80;
-    server_name *.vse-avtoservisy.loc;
-}
+
 server {
 	listen 171.255.255.8:443 ssl;
     server_name www.vse-avtoservisy.loc;
     include snippets/snakeoil.conf;
-    return https://vse-avtoservisy.loc;
+    return https://vse-avtoservisy.loc$request_uri;
 }
-server {
-	listen 171.255.255.8:443 ssl;
-    server_name *.vse-avtoservisy.loc;
-    include snippets/snakeoil.conf;
-    return https://vse-avtoservisy.loc;
-}
+
 server {
 	listen 171.255.255.8:443 ssl;
     server_name vse-avtoservisy.loc *.vse-avtoservisy.loc;
@@ -33,4 +25,11 @@ server {
     include snippets/common.conf;
 
     include snippets/php-7.1.conf;
+}
+
+server {
+	listen 171.255.255.8:443 ssl;
+    server_name *.vse-avtoservisy.loc;
+    include snippets/snakeoil.conf;
+    return https://$host;
 }
