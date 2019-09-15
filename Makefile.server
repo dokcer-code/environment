@@ -1,7 +1,8 @@
 docker-up:
-	docker-compose up -d php-fpm-7.3 php-cli-7.3
+	docker-compose up -d php-fpm-7.3 php-cli-7.3 mysql-5.7
 docker-down:
 	docker-compose down -v
 
 docker-cp:
 	cp docker-compose.override.server.yml docker-compose.override.yml
+	cp Makefile.server Makefile
