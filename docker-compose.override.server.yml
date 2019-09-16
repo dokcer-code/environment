@@ -5,6 +5,7 @@ services:
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
             - /var/www/api.hostels-msk.ru:/var/www/api.hostels-msk.ru
+            - /var/www/hostels-msk.ru:/var/www/hostels-msk.ru
     php-fpm-7.3:
         volumes:
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
