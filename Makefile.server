@@ -1,5 +1,5 @@
 docker-up:
-	docker-compose up -d php-fpm-7.3 php-cli-7.3 mysql-5.7
+	docker-compose up -d php-fpm-7.3 php-cli-7.3 mysql-5.7 mysql-8
 docker-down:
 	docker-compose down -v
 
