@@ -44,7 +44,7 @@ COPY conf.d/ /usr/local/etc/php/conf.d/
 
 # cron file
 COPY cron/crontab /etc/crontab
-COPY chmod 0644 /etc/crontab
+RUN chmod 0644 /etc/crontab
 
 # supervisor
 COPY supervisor/supervisord.conf /etc/supervisor/supervisord.conf

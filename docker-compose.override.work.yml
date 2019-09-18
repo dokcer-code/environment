@@ -7,6 +7,7 @@ services:
             - /var/www/cabinet/app/web/:/var/www/cabinet/app/web/
             - /var/www/salonrk/web:/var/www/salonrk/web
             - /var/www/laravel/public:/var/www/laravel/public
+            - /var/www/developer-pro.ru/public:/var/www/developer-pro.ru/public
         links:
             - php-fpm-7.1
             - php-fpm-7.3
@@ -33,9 +34,11 @@ services:
     php-cli-7.3:
         volumes:
             - /var/www/laravel:/var/www/laravel
+            - /var/www/developer-pro.ru:/var/www/developer-pro.ru
     php-fpm-7.3:
         volumes:
             - /var/www/laravel:/var/www/laravel
+            - /var/www/developer-pro.ru:/var/www/developer-pro.ru
     node:
         volumes:
             - /var/www/cabinet:/var/www/cabinet
