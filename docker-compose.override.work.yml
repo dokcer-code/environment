@@ -10,6 +10,7 @@ services:
             - /var/www/developer-pro.ru/public:/var/www/developer-pro.ru/public
             - /var/www/hostels-msk.ru/web:/var/www/hostels-msk.ru/web
             - /var/www/api.hostels-msk.ru/public:/var/www/api.hostels-msk.ru/public
+            - /var/www/service_network_2/app/web/servisy-nissan.ru:/var/www/service_network_2/app/web/servisy-nissan.ru
         links:
             - php-fpm-7.1
             - php-fpm-7.3
@@ -20,6 +21,7 @@ services:
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
             - /var/www/avto-servisy:/var/www/avto-servisy
             - /var/www/cabinet:/var/www/cabinet
+            - /var/www/service_network_2/app:/var/www/service_network_2/app
         links:
             - rabbitmq
     php-fpm-7.1:
@@ -28,6 +30,7 @@ services:
             - /var/www/vse-avtoservisy.ru:/var/www/vse-avtoservisy.ru
             - /var/www/avto-servisy:/var/www/avto-servisy
             - /var/www/cabinet:/var/www/cabinet
+            - /var/www/service_network_2/app:/var/www/service_network_2/app
         links:
             - redis
             - rabbitmq

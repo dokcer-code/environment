@@ -1,4 +1,5 @@
 docker-up:
+	cp docker-compose.override.work.yml docker-compose.override.yml
 	sudo service environmentd start
 docker-down:
 	sudo service environmentd stop
