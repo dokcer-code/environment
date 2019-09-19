@@ -2,3 +2,5 @@ docker-up:
 	sudo service environmentd start
 docker-down:
 	sudo service environmentd stop
+nginx-build:
+	docker-compose build nginx

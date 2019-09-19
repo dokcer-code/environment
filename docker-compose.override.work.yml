@@ -8,6 +8,8 @@ services:
             - /var/www/salonrk/web:/var/www/salonrk/web
             - /var/www/laravel/public:/var/www/laravel/public
             - /var/www/developer-pro.ru/public:/var/www/developer-pro.ru/public
+            - /var/www/hostels-msk.ru/web:/var/www/hostels-msk.ru/web
+            - /var/www/api.hostels-msk.ru/public:/var/www/api.hostels-msk.ru/public
         links:
             - php-fpm-7.1
             - php-fpm-7.3
@@ -35,10 +37,14 @@ services:
         volumes:
             - /var/www/laravel:/var/www/laravel
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
+            - /var/www/hostels-msk.ru:/var/www/hostels-msk.ru
+            - /var/www/api.hostels-msk.ru:/var/www/api.hostels-msk.ru
     php-fpm-7.3:
         volumes:
             - /var/www/laravel:/var/www/laravel
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
+            - /var/www/hostels-msk.ru:/var/www/hostels-msk.ru
+            - /var/www/api.hostels-msk.ru:/var/www/api.hostels-msk.ru
     node:
         volumes:
             - /var/www/cabinet:/var/www/cabinet
