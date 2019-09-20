@@ -11,6 +11,7 @@ services:
             - /var/www/hostels-msk.ru/web:/var/www/hostels-msk.ru/web
             - /var/www/api.hostels-msk.ru/public:/var/www/api.hostels-msk.ru/public
             - /var/www/service_network_2/app/web/servisy-nissan.ru:/var/www/service_network_2/app/web/servisy-nissan.ru
+            - /var/www/service_network/app/web/:/var/www/service_network/app/web/
         links:
             - php-fpm-7.1
             - php-fpm-7.3
@@ -42,12 +43,14 @@ services:
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
             - /var/www/hostels-msk.ru:/var/www/hostels-msk.ru
             - /var/www/api.hostels-msk.ru:/var/www/api.hostels-msk.ru
+            - /var/www/service_network/app/:/var/www/service_network/app/
     php-fpm-7.3:
         volumes:
             - /var/www/laravel:/var/www/laravel
             - /var/www/developer-pro.ru:/var/www/developer-pro.ru
             - /var/www/hostels-msk.ru:/var/www/hostels-msk.ru
             - /var/www/api.hostels-msk.ru:/var/www/api.hostels-msk.ru
+            - /var/www/service_network/app/:/var/www/service_network/app/
     node:
         volumes:
             - /var/www/cabinet:/var/www/cabinet
