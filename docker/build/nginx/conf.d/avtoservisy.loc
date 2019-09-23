@@ -1,7 +1,7 @@
 server {
     listen 171.255.255.8:80;
     root /var/www/service_network/app/web/avtoservisy-bmw.ru;
-    server_name avtoservisy-bmw.ru;
+    server_name avtoservisy-bmw.loc;
     charset utf-8;
     index index.php;
 
