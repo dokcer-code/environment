@@ -1,0 +1,7 @@
+# http://devzzy.blogspot.com/2016/03/nano-tab-4.html
+
+## Use this tab size instead of the default; it must be greater than 0.
+set tabsize 4
+
+## Convert typed tabs to spaces.
+set tabstospaces
