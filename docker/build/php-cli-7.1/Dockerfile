@@ -21,6 +21,9 @@ COPY sudo/user /etc/sudoers.d
 COPY home/.profile /home/user/
 RUN echo 'user:password' | chpasswd
 
+# nano
+COPY etc/nanorc /etc/
+
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
 
