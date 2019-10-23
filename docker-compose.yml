@@ -94,7 +94,8 @@ services:
             self:
                 ipv4_address: ${MYSQL_8_HOST}
     mysql-5.7:
-        image: mysql:5.7
+        build:
+            context: docker/build/mysql-5.7/
         environment:
             MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
         volumes:
