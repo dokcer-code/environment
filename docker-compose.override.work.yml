@@ -12,10 +12,6 @@ services:
             - /var/www/api.hostels-msk.ru/public:/var/www/api.hostels-msk.ru/public
             - /var/www/service_network_2/app/web/servisy-nissan.ru:/var/www/service_network_2/app/web/servisy-nissan.ru
             - /var/www/service_network/app/web/:/var/www/service_network/app/web/
-        links:
-            - php-fpm-7.1
-            - php-fpm-7.3
-            - node
     php-cli-7.1:
         volumes:
             - /var/www/salonrk:/var/www/salonrk
