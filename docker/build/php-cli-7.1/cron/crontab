@@ -20,5 +20,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
 52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 1  6    * * *   user    /var/www/cabinet/app/yii discount-action/auto-renew --log >> /var/log/cron/cron.log  2>>/var/log/cron/cron.error.log
-1  5    * * *   user    /var/www/cabinet/app/yii form/sync12221 --log >> /var/log/cron/form.log 2>>/var/log/cron/form.error.log
+# 1  5    * * *   user    /var/www/cabinet/app/yii form/sync12221 --log >> /var/log/cron/form.log 2>>/var/log/cron/form.error.log
 #
