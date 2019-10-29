@@ -112,15 +112,15 @@ services:
         networks:
             self:
                 ipv4_address: ${MYSQL_5_6_HOST}
-    node:
-        build:
-            context: ./docker/build/node
-        networks:
-            self:
-                ipv4_address: ${NODE_HOST}
-        working_dir: /var/www/
-        expose:
-            - 8890
+#    node:
+#        build:
+#            context: ./docker/build/node
+#        networks:
+#            self:
+#                ipv4_address: ${NODE_HOST}
+#        working_dir: /var/www/
+#        expose:
+#            - 8890
     redis:
         image: redis:5.0
         networks:
