@@ -1,6 +1,10 @@
 FROM nginx:1.17
 
-RUN apt-get update && apt-get -y install nano less mc
+RUN apt-get update && apt-get -y install \
+	nano \
+	less \
+	mc \
+	&& rm -rf /var/lib/apt/lists/*
 
 COPY nginx.conf /etc/nginx/
 COPY fastcgi.conf /etc/nginx/
