@@ -135,6 +135,14 @@ services:
         networks:
             self:
                 ipv4_address: ${RABBIT_MQ_HOST}
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - 1025
+            - 8025
+        networks:
+            self:
+                ipv4_address: ${MAILHOG_HOST}
 networks:
     self:
         driver: bridge

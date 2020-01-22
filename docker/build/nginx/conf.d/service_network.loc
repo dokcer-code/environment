@@ -1,0 +1,20 @@
+server {
+    listen 171.255.255.8:80;
+    server_name www.avtoservisy-huyndai.loc;
+    return https://avtoservisy-huyndai.ru$request_uri;
+}
+
+server {
+    listen 171.255.255.8:80;
+    server_name avtoservisy-huyndai.loc;
+    root /var/www/service_network/app/web/avtoservisy-huyndai.ru;
+    index index.php;
+    charset utf-8;
+
+    access_log /var/log/nginx/avtoservisy-huyndai_access.log;
+    error_log /var/log/nginx/avtoservisy-huyndai_error.log;
+
+    include snippets/favicon.ico.conf;
+    include snippets/common.conf;
+    include snippets/php-7.1.conf;
+}
