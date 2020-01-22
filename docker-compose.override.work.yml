@@ -19,6 +19,7 @@ services:
             - /var/www/avto-servisy:/var/www/avto-servisy
             - /var/www/cabinet:/var/www/cabinet
             - /var/www/service_network_2/app:/var/www/service_network_2/app
+            - /var/www/service_network/app:/var/www/service_network/app
         links:
             - rabbitmq
     php-fpm-7.1:
@@ -28,6 +29,7 @@ services:
             - /var/www/avto-servisy:/var/www/avto-servisy
             - /var/www/cabinet:/var/www/cabinet
             - /var/www/service_network_2/app:/var/www/service_network_2/app
+            - /var/www/service_network/app:/var/www/service_network/app
         links:
             - redis
             - rabbitmq
