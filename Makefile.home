@@ -1,4 +1,4 @@
 docker-up:
-	docker-compose up -d nginx php-fpm-7.3 php-cli-7.3 php-fpm-7.1 php-cli-7.1 mysql-5.7 mysql-8
+	docker-compose up -d nginx php-fpm-7.3 php-cli-7.3 php-fpm-7.1 php-cli-7.1 mysql-5.7 mysql-8 mailhog
 docker-down:
 	docker-compose down -v
