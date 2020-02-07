@@ -12,3 +12,12 @@ server {
     include snippets/common.conf;
     include snippets/php-7.1.conf;
 }
+
+server {
+    listen 171.255.255.8:80;
+    root /var/www/service_network/app/web/avtoservisy-bmw.ru;
+    server_name avtoservisy-bmw.loc;
+
+    include snippets/common.conf;
+    include snippets/php-7.3.conf;
+}
