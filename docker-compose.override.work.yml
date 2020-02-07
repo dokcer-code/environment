@@ -13,6 +13,7 @@ services:
             - /var/www/service_network_2/app/web/servisy-nissan.ru:/var/www/service_network_2/app/web/servisy-nissan.ru
             - /var/www/service_network/app/web/:/var/www/service_network/app/web/
             - /var/www/service_network_3/app/web/:/var/www/service_network_3/app/web/
+            - /var/www/service_network_4/app:/var/www/service_network_4/app
     php-cli-7.1:
         volumes:
             - /var/www/salonrk:/var/www/salonrk
@@ -22,6 +23,7 @@ services:
             - /var/www/service_network_2/app:/var/www/service_network_2/app
             - /var/www/service_network/app:/var/www/service_network/app
             - /var/www/service_network_3/app:/var/www/service_network_3/app
+            - /var/www/service_network_4/app:/var/www/service_network_4/app
         links:
             - rabbitmq
     php-fpm-7.1:
@@ -33,6 +35,7 @@ services:
             - /var/www/service_network_2/app:/var/www/service_network_2/app
             - /var/www/service_network/app:/var/www/service_network/app
             - /var/www/service_network_3/app:/var/www/service_network_3/app
+            - /var/www/service_network_4/app:/var/www/service_network_4/app
         links:
             - redis
             - rabbitmq
