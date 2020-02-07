@@ -3,7 +3,6 @@ server {
     root /var/www/service_network/app/web/avtoservisy-bmw.ru;
     server_name avtoservisy-bmw.loc;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.3.conf;
 }

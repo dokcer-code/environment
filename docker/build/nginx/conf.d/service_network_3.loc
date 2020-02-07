@@ -9,7 +9,6 @@ server {
     server_name dvigateley-remont.loc;
     root /var/www/service_network_3/app/web/repairbody.ru;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.1.conf;
 }

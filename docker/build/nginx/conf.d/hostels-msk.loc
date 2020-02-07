@@ -3,7 +3,6 @@ server {
 	server_name hostels-msk.loc;
 	root /var/www/hostels-msk.ru/web;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.3.conf;
 }

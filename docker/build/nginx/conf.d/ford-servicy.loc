@@ -3,7 +3,6 @@ server {
     server_name ford-servisy.loc;
     root /var/www/service_network_2/app/web/servisy-nissan.ru;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.1.conf;
 }

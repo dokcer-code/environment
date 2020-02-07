@@ -15,7 +15,6 @@ server {
     root /var/www/avto-servisy/app/web;
 
     include snippets/snakeoil.conf;
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
 
     include snippets/php-7.1.conf;

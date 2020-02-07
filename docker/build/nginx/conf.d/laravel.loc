@@ -3,7 +3,6 @@ server {
 	server_name laravel.loc;
     root /var/www/laravel/public;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.3.conf;
 }

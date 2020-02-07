@@ -3,7 +3,6 @@ server {
 	server_name russian-belle.loc;
     root /var/www/salonrk/web;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.1.conf;
 }

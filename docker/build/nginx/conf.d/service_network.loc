@@ -9,7 +9,6 @@ server {
     server_name avtoservisy-huyndai.loc;
     root /var/www/service_network/app/web/avtoservisy-huyndai.ru;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.1.conf;
 }

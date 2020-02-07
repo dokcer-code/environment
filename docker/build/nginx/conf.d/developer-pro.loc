@@ -3,7 +3,6 @@ server {
 	server_name developer-pro.loc;
     root /var/www/developer-pro.ru/public;
 
-    include snippets/favicon.ico.conf;
     include snippets/common.conf;
     include snippets/php-7.3.conf;
 }
