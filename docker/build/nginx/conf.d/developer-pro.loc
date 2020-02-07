@@ -2,11 +2,6 @@ server {
     listen 171.255.255.8:80;
 	server_name developer-pro.loc;
     root /var/www/developer-pro.ru/public;
-    index index.php;
-    charset utf-8;
-
-    access_log /var/log/nginx/developer-pro.access.log;
-    error_log /var/log/nginx/developer-pro.error.log;
 
     include snippets/favicon.ico.conf;
     include snippets/common.conf;

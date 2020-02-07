@@ -2,11 +2,6 @@ server {
     listen 171.255.255.8:80;
     root /var/www/service_network/app/web/avtoservisy-bmw.ru;
     server_name avtoservisy-bmw.loc;
-    charset utf-8;
-    index index.php;
-
-    access_log /var/log/nginx/avtoservisy-bmw.access.log;
-    error_log /var/log/nginx/avtoservisy-bmw.error.log;
 
     include snippets/favicon.ico.conf;
     include snippets/common.conf;

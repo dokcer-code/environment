@@ -2,11 +2,6 @@ server {
 	listen 171.255.255.8:80;
 	server_name api.hostels-msk.loc;
 	root /var/www/api.hostels-msk.ru/public;
-    index index.php;
-    charset utf-8;
-
-    access_log /var/log/nginx/api.hostels-msk.ru.access.log;
-    error_log /var/log/nginx/api.hostels-msk.ru.error.log;
 
     include snippets/favicon.ico.conf;
     include snippets/common.conf;

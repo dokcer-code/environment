@@ -2,11 +2,6 @@ server {
     listen 171.255.255.8:80;
 	server_name russian-belle.loc;
     root /var/www/salonrk/web;
-    index index.php;
-    charset utf-8;
-
-    access_log /var/log/nginx/salonrk_access.log;
-    error_log /var/log/nginx/salonrk_error.log;
 
     include snippets/favicon.ico.conf;
     include snippets/common.conf;

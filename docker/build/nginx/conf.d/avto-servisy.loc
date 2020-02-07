@@ -13,10 +13,6 @@ server {
 	listen 171.255.255.8:443 ssl;
     server_name avto-servisy.loc;
     root /var/www/avto-servisy/app/web;
-    index index.php;
-    charset utf-8;
-    access_log /var/log/nginx/avto-servisy.access.log;
-    error_log /var/log/nginx/avto-servisy.error.log;
 
     include snippets/snakeoil.conf;
     include snippets/favicon.ico.conf;

@@ -12,10 +12,6 @@ server {
 	listen 171.255.255.8:443 ssl;
     server_name cabinet.vse-avtoservisy.loc;
     root /var/www/cabinet/app/web;
-    index index.php;
-    charset utf-8;
-    access_log /var/log/nginx/cabinet_access.log;
-    error_log /var/log/nginx/cabinet_error.log;
 
     include snippets/snakeoil.conf;
     include snippets/favicon.ico.conf;
