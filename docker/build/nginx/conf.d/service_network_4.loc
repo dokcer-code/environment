@@ -1,12 +1,12 @@
 server {
     listen 171.255.255.8:80;
-    server_name www.avtoservis-ford.loc;
+    server_name www.avtoservis-kia.loc;
     return https://avtoservis-ford.loc$request_uri;
 }
 
 server {
     listen 171.255.255.8:80;
-    server_name avtoservis-ford.loc;
+    server_name avtoservis-kia.loc;
     root /var/www/service_network_4/app/web;
 
     include snippets/common.conf;
