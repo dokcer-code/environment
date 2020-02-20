@@ -1,4 +1,9 @@
 server {
+    listen 171.255.255.8:443 ssl;
+    return http://$host$request_uri;
+}
+
+server {
     listen 171.255.255.8:80;
     server_name servisy-audi.loc;
     root /var/www/service_network_2/app/web/servisy-nissan.ru;
@@ -10,6 +15,15 @@ server {
 server {
     listen 171.255.255.8:80;
     server_name ford-servisy.loc;
+    root /var/www/service_network_2/app/web/servisy-nissan.ru;
+
+    include snippets/common.conf;
+    include snippets/php-7.1.conf;
+}
+
+server {
+    listen 171.255.255.8:80;
+    server_name servisy-toyota.loc;
     root /var/www/service_network_2/app/web/servisy-nissan.ru;
 
     include snippets/common.conf;
