@@ -1,9 +1,9 @@
-docker-up:
+up:
 	cp docker-compose.override.work.yml docker-compose.override.yml
 	sudo service environmentd start
-docker-down:
+down:
 	sudo service environmentd stop
 nginx-build:
 	docker-compose build nginx
 restart:
-	docker-down && docker-up
+	down && up

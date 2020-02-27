@@ -1,8 +1,0 @@
-server {
-    listen 171.255.255.8:80;
-	server_name russian-belle.loc;
-    root /var/www/salonrk/web;
-
-    include snippets/common.conf;
-    include snippets/php-7.1.conf;
-}

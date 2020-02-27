@@ -1,8 +1,0 @@
-server {
-    listen 171.255.255.8:80;
-	server_name developer-pro.loc;
-    root /var/www/developer-pro.ru/public;
-
-    include snippets/common.conf;
-    include snippets/php-7.3.conf;
-}

@@ -12,4 +12,3 @@ COPY snippets /etc/nginx/snippets
 COPY ssl-cert-snakeoil.key  /etc/ssl/private/ssl-cert-snakeoil.key
 COPY ssl-cert-snakeoil.pem /etc/ssl/certs/ssl-cert-snakeoil.pem
 COPY auth.basic /etc/nginx/
-COPY conf.d/ /etc/nginx/conf.d/
