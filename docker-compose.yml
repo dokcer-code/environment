@@ -29,7 +29,7 @@ services:
         working_dir: /var/www
         networks:
             self:
-                ipv4_address: ${PHP_CLI_7_4_HOST}
+                ipv4_address: ${PHP_CLI_7_1_HOST}
     php-fpm-7.1:
         build:
             context: docker/build/php-fpm-7.1/
@@ -101,7 +101,7 @@ services:
         working_dir: /var/www
         networks:
             self:
-                ipv4_address: ${PHP_CLI_7_1_HOST}
+                ipv4_address: ${PHP_CLI_7_4_HOST}
     php-fpm-7.4:
         build:
             context: docker/build/php-fpm-7.4/
