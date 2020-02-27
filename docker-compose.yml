@@ -29,7 +29,7 @@ services:
         working_dir: /var/www
         networks:
             self:
-                ipv4_address: ${PHP_CLI_7_1_HOST}
+                ipv4_address: ${PHP_CLI_7_4_HOST}
     php-fpm-7.1:
         build:
             context: docker/build/php-fpm-7.1/
@@ -83,6 +83,25 @@ services:
         networks:
             self:
                 ipv4_address: ${PHP_7_3_HOST}
+    php-cli-7.4:
+        build:
+            context: docker/build/php-cli-7.4/
+            args:
+                UID: ${USER_ID}
+        volumes:
+            - ./docker/build/php-cli-7.4/supervisor/log:/var/log/supervisor
+            - /home/cheremhovo1990/.ssh:/home/user/.ssh
+            - ./docker/build/php-cli-7.4/bash_history/.bash_history:/home/user/.bash_history
+            - ./docker/build/php-cli-7.4/cron/log:/var/log/cron
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+            - /sys/fs/fuse:/sys/fs/fuse
+        tmpfs:
+            - /run
+            - /run/lock
+        working_dir: /var/www
+        networks:
+            self:
+                ipv4_address: ${PHP_CLI_7_1_HOST}
     php-fpm-7.4:
         build:
             context: docker/build/php-fpm-7.4/
