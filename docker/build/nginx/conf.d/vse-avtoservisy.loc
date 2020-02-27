@@ -13,7 +13,7 @@ server {
 
 server {
 	listen 171.255.255.8:443 ssl;
-    server_name vse-avtoservisy.loc *.vse-avtoservisy.loc;
+    server_name vse-avtoservisy.loc;
     root /var/www/vse-avtoservisy.ru/app/web;
 
     include snippets/snakeoil.conf;

@@ -3,3 +3,5 @@ up:
 down:
 	docker-compose down -v
 restart: down up
+nginx-reload:
+	docker-compose exec nginx nginx -s reload
