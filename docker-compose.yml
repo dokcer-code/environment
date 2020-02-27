@@ -83,6 +83,20 @@ services:
         networks:
             self:
                 ipv4_address: ${PHP_7_3_HOST}
+    php-fpm-7.4:
+        build:
+            context: docker/build/php-fpm-7.4/
+            args:
+                UID: ${USER_ID}
+        volumes:
+            - ./docker/build/php-fpm-7.4/log:/usr/local/var/log/php
+            - ./docker/build/php-fpm-7.4/tmp:/tmp/php
+        environment:
+            CLIENT_HOST: ${CLIENT_HOST}
+        working_dir: /var/www
+        networks:
+            self:
+                ipv4_address: ${PHP_7_4_HOST}
     mysql-8:
         build:
             context: docker/build/mysql-8/
