@@ -3,6 +3,7 @@ services:
     nginx:
         build:
             context: docker/build/nginx
+        restart: always
         volumes:
             - ./docker/build/nginx/log:/var/log/nginx
         expose:
@@ -88,6 +89,7 @@ services:
             context: docker/build/php-cli-7.4/
             args:
                 UID: ${USER_ID}
+        restart: always
         volumes:
             - ./docker/build/php-cli-7.4/supervisor/log:/var/log/supervisor
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
@@ -107,6 +109,7 @@ services:
             context: docker/build/php-fpm-7.4/
             args:
                 UID: ${USER_ID}
+        restart: always
         volumes:
             - ./docker/build/php-fpm-7.4/log:/usr/local/var/log/php
             - ./docker/build/php-fpm-7.4/tmp:/tmp/php
@@ -119,6 +122,7 @@ services:
     mysql-8:
         build:
             context: docker/build/mysql-8/
+        restart: always
         volumes:
             - ./docker/server/mysql-8:/var/lib/mysql
         environment:
@@ -156,6 +160,7 @@ services:
 #            - 8890
     redis:
         image: redis:5.0
+        restart: always
         networks:
             self:
                 ipv4_address: ${REDIS_HOST}
@@ -169,6 +174,7 @@ services:
             self:
                 ipv4_address: ${RABBIT_MQ_HOST}
     mailhog:
+        restart: always
         image: mailhog/mailhog
         ports:
             - 1025
