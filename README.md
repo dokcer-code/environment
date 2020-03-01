@@ -12,3 +12,8 @@ Host 171.255.255.*
    StrictHostKeyChecking no
    UserKnownHostsFile=/dev/null
 ~~~
+
+cli enable xdebug
+~~~
+-dxdebug.remote_host=171.255.255.1
+~~~

@@ -33,6 +33,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN apt-get update && apt-get install -y libzip-dev  && docker-php-ext-install zip && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y libsodium-dev  && docker-php-ext-install sodium && rm -rf /var/lib/apt/lists/*
+
 RUN pecl install xdebug-2.9.2 && docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install pdo_mysql sockets bcmath
