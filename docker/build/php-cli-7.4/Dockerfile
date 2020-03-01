@@ -17,6 +17,12 @@ RUN apt-get update && apt-get install -y \
 	npm \
     && rm -rf /var/lib/apt/lists/*
 
+# yarn
+RUN apt-get update && apt-get install -y gnupg2
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
+
 # user
 RUN useradd --create-home --uid $UID --shell /bin/bash user
 COPY sudo/user /etc/sudoers.d
