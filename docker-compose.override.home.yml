@@ -12,6 +12,12 @@ services:
     php-cli-7.3:
         volumes:
             - /var/www:/var/www
+    php-fpm-7.3:
+        volumes:
+            - /var/www:/var/www
+    php-cli-7.4:
+        volumes:
+            - /var/www:/var/www
     php-fpm-7.4:
         volumes:
             - /var/www:/var/www
