@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # user
-RUN useradd -m --uid $UID --shell /bin/bash user
+RUN useradd --create-home --uid $UID --shell /bin/bash user
 COPY sudo/user /etc/sudoers.d
 
 # install composer
@@ -25,7 +25,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN apt-get update &&  apt-get install -y libzip-dev && docker-php-ext-install zip && rm -rf /var/lib/apt/lists/*
 
-RUN pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.9.2 && docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install pdo_mysql sockets bcmath
 

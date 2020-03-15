@@ -4,22 +4,34 @@ ARG UID
 
 ENV DEBIAN_FRONT nointeractive
 
-RUN apt-get update && apt-get install -y less nano \
+RUN apt-get update && apt-get install -y \
+    less \
+    nano \
     mc \
     git \
     supervisor \
     sudo \
     openssh-server \
     cron \
-    node.js \
-    npm \
+	node.js \
+	npm \
     && rm -rf /var/lib/apt/lists/*
+
+# yarn
+RUN apt-get update && apt-get install -y gnupg2
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
+
 
 # user
 RUN useradd --create-home --uid $UID --shell /bin/bash user
 COPY sudo/user /etc/sudoers.d
 COPY home/.profile /home/user/
 RUN echo 'user:password' | chpasswd
+
+# nano
+COPY etc/nanorc /etc/
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
@@ -28,7 +40,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN apt-get update && apt-get install -y libzip-dev && docker-php-ext-install zip && rm -rf /var/lib/apt/lists/*
 
-RUN pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.9.2 && docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install pdo_mysql sockets bcmath
 
