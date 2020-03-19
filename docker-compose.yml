@@ -16,7 +16,8 @@ services:
         build:
             context: docker/build/php-cli-7.1/
             args:
-                UID: ${USER_ID}
+                UID: ${USER_ID}\
+        restart: always
         volumes:
             - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
@@ -36,6 +37,7 @@ services:
             context: docker/build/php-fpm-7.1/
             args:
                 UID: ${USER_ID}
+        restart: always
         volumes:
             - ./docker/build/php-fpm-7.1/log:/usr/local/var/log/php
             - ./docker/build/php-fpm-7.1/tmp:/tmp/php
@@ -48,6 +50,7 @@ services:
     php-fpm-7.2:
         build:
             context: docker/build/php-fpm-7.2/
+        restart: always
         networks:
             self:
                 ipv4_address: ${PHP_7_2_HOST}
@@ -56,6 +59,7 @@ services:
             context: docker/build/php-cli-7.3/
             args:
                 UID: ${USER_ID}
+        restart: always
         volumes:
             - ./docker/build/php-cli-7.3/supervisor/log:/var/log/supervisor
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
@@ -75,6 +79,7 @@ services:
             context: docker/build/php-fpm-7.3/
             args:
                 UID: ${USER_ID}
+        restart: always
         environment:
             CLIENT_HOST: ${CLIENT_HOST}
         volumes:
@@ -133,6 +138,7 @@ services:
     mysql-5.7:
         build:
             context: docker/build/mysql-5.7/
+        restart: always
         environment:
             MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
         volumes:
@@ -166,6 +172,7 @@ services:
                 ipv4_address: ${REDIS_HOST}
     rabbitmq:
         image: rabbitmq:3.7-management
+        restart: always
         environment:
             RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
             RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
