@@ -52,6 +52,10 @@ RUN apt-get update && apt-get install -y libjpeg62-turbo-dev libpng-dev libfreet
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/png/ --with-freetype-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
 
+RUN apt-get update && apt install -y libmagickwand-dev --no-install-recommends && \
+        pecl install imagick && docker-php-ext-enable imagick && \
+        rm -rf /var/lib/apt/lists/*
+
 COPY conf.d/ /usr/local/etc/php/conf.d/
 
 # cron file

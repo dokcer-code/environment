@@ -37,6 +37,11 @@ RUN apt-get update &&  apt-get install -y libjpeg62-turbo-dev libpng-dev libfree
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/png/ --with-freetype-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
 
+RUN apt-get update && apt-get upgrade -y && apt install -y libmagickwand-dev --no-install-recommends && \
+        pecl install imagick && docker-php-ext-enable imagick && \
+        rm -rf /var/lib/apt/lists/*
+
+
 RUN mkdir /usr/local/var/log/php/
 RUN chmod 0777 /usr/local/var/log/php
 COPY www.conf /usr/local/etc/php-fpm.d/www.conf
