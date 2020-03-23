@@ -16,7 +16,7 @@ services:
         build:
             context: docker/build/php-cli-7.1/
             args:
-                UID: ${USER_ID}\
+                UID: ${USER_ID}
         restart: always
         volumes:
             - ./docker/build/php-cli-7.1/supervisor/log:/var/log/supervisor
