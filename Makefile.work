@@ -1,9 +1,7 @@
 up:
-	cp docker-compose.override.work.yml docker-compose.override.yml
-	sudo service environmentd start
+	docker-compose up -d nginx php-fpm-7.3 php-cli-7.3 redis mysql-5.7 redis
 down:
-	sudo service environmentd stop
-nginx-build:
-	docker-compose build nginx
-restart:
-	down && up
+	docker-compose down -v
+restart: down up
+nginx-reload:
+	docker-compose exec nginx nginx -s reload
