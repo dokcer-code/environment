@@ -60,6 +60,7 @@ services:
             args:
                 UID: ${USER_ID}
         restart: always
+        hostname: php-cli-7.3
         volumes:
             - ./docker/build/php-cli-7.3/supervisor/log:/var/log/supervisor
             - /home/cheremhovo1990/.ssh:/home/user/.ssh
@@ -80,6 +81,7 @@ services:
             args:
                 UID: ${USER_ID}
         restart: always
+        hostname: php-fpm-7.3
         environment:
             CLIENT_HOST: ${CLIENT_HOST}
         volumes:
