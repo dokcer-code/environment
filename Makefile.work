@@ -5,3 +5,5 @@ down:
 restart: down up
 nginx-reload:
 	docker-compose exec nginx nginx -s reload
+bash_history:
+	touch docker/build/php-cli-7.3/bash_history/.bash_history
