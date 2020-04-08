@@ -1,0 +1,17 @@
+server {
+    listen 171.255.255.8:80;
+    server_name api.ttr-back.loc;
+    root /var/www/ttr-back/public;
+
+    include snippets/common.conf;
+    include snippets/php-7.3.conf;
+}
+
+server {
+    listen 171.255.255.8:80;
+    server_name school.ttr-back.loc;
+    root /var/www/ttr-back/public;
+
+    include snippets/common.conf;
+    include snippets/php-7.3.conf;
+}
