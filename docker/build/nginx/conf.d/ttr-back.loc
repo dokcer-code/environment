@@ -9,7 +9,7 @@ server {
 
 server {
     listen 171.255.255.8:80;
-    server_name school.ttr-back.loc;
+    server_name school-api.ttr-back.loc;
     root /var/www/ttr-back/public;
 
     include snippets/common.conf;
