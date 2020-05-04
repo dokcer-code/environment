@@ -137,6 +137,14 @@ services:
         networks:
             self:
                 ipv4_address: ${MYSQL_8_HOST}
+    postgres:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: 'postgres'
+        networks:
+            self:
+                ipv4_address: ${PHP_POSTGRES_HOST}
     mysql-5.7:
         build:
             context: docker/build/mysql-5.7/
