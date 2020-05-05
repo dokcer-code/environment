@@ -6,6 +6,7 @@ character-set-server = utf8mb4
 general_log_file=/var/lib/mysql/general_log.log
 slow_query_log=on
 slow_query_log_file=/var/lib/mysql/slow_query.log
+log-error       = /var/www/environment/docker/build/mysql-8/log/log
 
 [client]
 default-character-set=utf8mb4

@@ -1,7 +1,9 @@
-up:
+up: init
 	docker-compose up -d nginx php-fpm-7.4 php-cli-7.4 php-fpm-7.3 php-cli-7.3 mysql-5.7 mailhog redis
 down:
 	docker-compose down -v
 restart: down up
+init:
+	./init.sh
 nginx-reload:
 	docker-compose exec nginx nginx -s reload

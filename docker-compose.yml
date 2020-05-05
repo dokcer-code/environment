@@ -131,6 +131,7 @@ services:
             context: docker/build/mysql-8/
         restart: always
         volumes:
+            - /var/www:/var/www
             - ./docker/server/mysql-8:/var/lib/mysql
         environment:
             MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
