@@ -4,7 +4,7 @@ map $http_upgrade $connection_upgrade {
 }
 
 server {
-    listen 171.255.255.8:80;
+    listen 192.168.255.8:80;
     server_name cabinet.vse-avtoservisy.loc;
     return https://cabinet.avto-servisy.loc;
 }

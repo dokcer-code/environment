@@ -1,5 +1,5 @@
 server {
-    listen 171.255.255.8:80;
+    listen 192.168.255.8:80;
     server_name api.ttr-back.loc;
     root /var/www/ttr-back/public;
 
@@ -8,7 +8,7 @@ server {
 }
 
 server {
-    listen 171.255.255.8:80;
+    listen 192.168.255.8:80;
     server_name school-api.ttr-back.loc;
     root /var/www/ttr-back/public;
 

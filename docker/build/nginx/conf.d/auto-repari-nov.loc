@@ -1,12 +1,12 @@
 server {
-    listen 171.255.255.8:443 ssl;
+    listen 192.168.255.8:443 ssl;
 	server_name auto-repair-nov.loc;
  	include snippets/snakeoil.conf;
     return http://$host$request_uri;
 }
 
 server {
-    listen 171.255.255.8:80;
+    listen 192.168.255.8:80;
     server_name auto-repair-nov.loc;
     root /var/www/auto-repair-nov.loc/public;
 
