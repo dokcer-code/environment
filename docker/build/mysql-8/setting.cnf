@@ -2,6 +2,7 @@
 default_authentication_plugin=mysql_native_password
 collation-server = utf8mb4_unicode_ci
 character-set-server = utf8mb4
+default_time_zone=Europe/Moscow
 #general_log=on
 general_log_file=/var/lib/mysql/general_log.log
 slow_query_log=on
