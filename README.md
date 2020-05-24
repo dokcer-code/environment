@@ -8,14 +8,14 @@ service environmentd start
 
 ~/.ssh/config
 ~~~
-Host 171.255.255.*
+Host 192.168.255.*
    StrictHostKeyChecking no
    UserKnownHostsFile=/dev/null
 ~~~
 
 cli enable xdebug
 ~~~
--dxdebug.remote_host=171.255.255.1
+-dxdebug.remote_host=192.168.255.1
 ~~~
 
 delete nginx log
